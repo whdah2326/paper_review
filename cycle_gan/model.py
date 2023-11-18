@@ -5,7 +5,10 @@ from typing import Union
 from collections import OrderedDict
 
 
+
 shape_dict = dict()
+
+
 
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels:int, out_channels:int):
@@ -24,11 +27,13 @@ class ResidualBlock(nn.Module):
             nn.InstanceNorm2d(self.out_channels)
         )
 
+
     def forward(self, x):
         output = self.block(x) + x
 
         return output
     
+
 
 class Generator(nn.Module):
     def __init__(self, init_channel:int, kernel_size:int, stride:int, n_blocks:int=6):
@@ -65,11 +70,13 @@ class Generator(nn.Module):
             layers
         )
 
+
         def forward(self, x):
             op = self.model(x)
             assert op.shape == x.shape, f"output shape ({op.shape}) must be same with the input size ({x.shape})"
             return op
         
+
         def _make_block(self, in_channels:int, out_channels:int, kernel_size:int, stride:int,
                         padding:Union[int,str]=1, mode:str='d'):
             block = []
@@ -84,6 +91,7 @@ class Generator(nn.Module):
 
             return nn.Sequential(*block)
         
+
             
 class Discriminator(nn.Module):
     def __init__(self, n_layers:int=4, input_c:int=3, n_filter:int=64, kernel_size:int=4):
@@ -103,4 +111,61 @@ class Discriminator(nn.Module):
                 oc = 2*ic
                 stride=2
 
-            
+                if i == self.n_layers-1:
+                    stride=1
+
+                layers.append(self._make_block(ic, oc, kernel_size=self.kernel_size,
+                                               stride=stride, padding=1))
+                
+            layers.append(nn.Conv2d(oc, 1, kernel_size=self.kernel_size, stride=1, padding=1))
+
+            self.model = nn.Sequential(*layers)
+
+
+    def forward(self, x):
+        return self.model(x)
+        
+
+    def _make_block(self, in_channels, out_channels, stride, kernel_size=3, padding=0, normalize=True):
+        layers = [nn.Conv2d(in_channels=in_channels, out_channels=out_channels, stride=stride,
+                            kernel_size=kernel_size, padding=padding)]
+        if normalize:
+            layers.append(nn.InstanceNorm2d(out_channels))
+        layers.append(nn.LeakyReLU(0.2, inplace=True))
+
+        return nn.Sequential(*layers)
+
+
+def hook_fn(m, _, o):
+    shape_dict[m]=o.shape
+
+
+def get_all_layers(net:nn.Module, hook_fn=hook_fn):
+    for name, layer in net._modules.items():
+        if isinstance(layer, nn.Sequential):
+            get_all_layers(layer)
+        else:
+            layer.register_forward_hook(hook_fn)
+
+
+if __name__=="__main__":
+    kwargs = {
+        'init_channel': 64,
+        'stride': 2,
+        'kernel_size': 3,
+        'n_blocks': 9
+    }
+    ip = torch.randn(1,3,256,256)
+
+    D = Discriminator()
+    G = Generator(**kwargs)
+
+    print(D)
+    for name, param in D.named_parameters():
+        print(name)
+    
+    get_all_layers(D)
+
+    op_d = D(ip)
+    op_g = G(ip)
+    # print(*shape_dict.values(), sep="\n")
