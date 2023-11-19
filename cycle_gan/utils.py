@@ -92,4 +92,39 @@ def save_checkpoint(epoch, G, F, D_x, D_y, optim_G, optim_D, scheduler_G, schedu
 
     os.makedirs(saved_dir, exist_ok=True)
 
-    output_path = os.path
+    output_path = os.path.join(saved_dir, file_name)
+    torch.save(check_point, output_path)
+
+
+def load_checkpoint(checkpoint_path, G, F, D_x: Optional[torch.nn.Module]=None, D_y: Optional[torch.nn.Module]=None, \
+                    optim_G: Optional[Optimizer]=None, optim_D: Optional[Optimizer]=None, \
+                    scheduler_G: Optional[_LRScheduler]=None, scheduler_D: Optional[_LRScheduler]=None, mode: str="model"):
+
+
+    checkpoint = torch.load(checkpoint_path)
+    G.load_state_dict(checkpoint_path['G'])
+    F.load_state_dict(checkpoint['F'])
+
+    if D_x and D_y:
+        D_x.load_state_dict(checkpoint['D_x'])
+        D_y.load_state_dict(checkpoint['D_y'])
+
+    start_epoch = checkpoint['epoch']
+
+    if mode == "model":
+        return G, F, D_x, D_y, start_epoch
+    
+    if mode == "all":
+        optim_G.load_state_dict(checkpoint['optimG_state_dict'])
+        optim_D.load_state_dict(checkpoint['optimD_state_dict'])
+
+        if scheduler_G and scheduler_D:
+            scheduler_G.load_state_dict(checkpoint['scheduler_G_state_dict'])
+            scheduler_D.load_state_dict(checkpoint['scheduler_D_state_dict'])
+
+            return G, F, D_x, D_y, optim_G, optim_D, scheduler_G, scheduler_D, start_epoch
+        
+        return G, F, D_x, D_y, optim_G, optim_D, start_epoch
+    
+    else:
+        raise ValueError("mode should be one of 'model' or 'all'")
