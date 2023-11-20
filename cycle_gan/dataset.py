@@ -53,7 +53,7 @@ class UnalignedDataset(Dataset):
     
 
 if __name__ == "__main__":
-    img_dir = "./cycle_gan/sample/trainA"
+    img_dir = "...insert path"
     img_dir = glob.glob(img_dir+"/*")
     img = cv2.imread(img_dir[2])
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
