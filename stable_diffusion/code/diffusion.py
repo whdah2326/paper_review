@@ -5,7 +5,6 @@ from attention import SelfAttention, CrossAttention
 
 ## U-NET 아키텍처를 사용한 Diffusion 모델
 
-
 ## TimeEmbedding
 ## 1. __init__ 
 ## : n_embd 차원의 선형 레이어를 포함.
@@ -33,7 +32,6 @@ class TimeEmbedding(nn.Module):
         x = self.linear_2(x)
 
         return x
-
 
 
 ## UNET_ResidualBlock
@@ -237,6 +235,7 @@ class SwitchSequential(nn.Sequential):
             else:
                 x = layer(x)
         return x
+
 
 ## UNET
 ## __init__

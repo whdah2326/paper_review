@@ -30,7 +30,7 @@ def generate(
     do_cfg=True, ## Output with prompt or Output without prompt | Choice Classifier Free Guidence
     cfg_scale=7.5, ## Indicates how much you want to pay attention to the conditioned output | about prompt
     sampler_name="ddpm",
-    n_inference_steps=50, ## Generator >> do_cfg >> input_image >> timesteps roop(ddpm sampler - UNet)
+    n_inference_steps=50, ## Generator >> do_cfg >> input_image >> timesteps Loop(ddpm sampler - UNet)
     models={},
     seed=None,
     device=None,
@@ -119,7 +119,7 @@ def generate(
 
             # Add noise to the latents (the encoded input image)
             # (Batch_Size, 4, Latents_Height, Latents_Width)
-            ## eg. strength=1 : maximum noise level, 0.5 : half noise level.
+            ## eg. strength=1: maximum noise level, 0.5: half noise level.
             sampler.set_strength(strength=strength)
             latents = sampler.add_noise(latents, sampler.timesteps[0])
 

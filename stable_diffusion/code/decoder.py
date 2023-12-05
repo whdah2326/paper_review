@@ -43,7 +43,7 @@ class VAE_AttentionBlock(nn.Module):
         # (Batch_Size, Features, Height, Width)
         return x 
     
-        ## 입력 데이터에 Self-Attention을 적용하여 모델이 입력의 중요한 부분에 집중하도록 한다.
+        ## 입력 데이터에 Self Attention을 적용하여 모델이 입력의 중요한 부분에 집중하도록 한다.
         ## residual connection을 통해 그라디언트 소실 문제를 완화.
 
 
@@ -101,7 +101,7 @@ class VAE_ResidualBlock(nn.Module):
 ## 4-1. 마지막 Convolutional 블록 및 출력 채널 조정: 마지막으로 Convolutional 블록을 통과시킨 뒤, 
 ## 4-2. 최종 출력 채널을 3으로 조정하여 RGB 이미지를 재구성.
 ## 5. Scaling 제거 : Encoder에서 추가된 스케일링을 제거.
-## 6. 전체 모델에 대한 Forward Pass 수행 : 각 레이어 및 블록에 대해 forward pass를 수행.
+## 6. 전체 모델에 대한 Forward Pass 수행 : 각 레이어 및 블록에 대해 Forward pass를 수행.
 
 class VAE_Decoder(nn.Sequential):
     def __init__(self):

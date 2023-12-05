@@ -7,7 +7,7 @@ from decoder import VAE_AttentionBlock, VAE_ResidualBlock
 ## 1-1. Conv2d와 VAE_ResidualBlock을 번갈아 가면서 여러 층을 쌓는다.
 ## 1-2. 각 Residual 블록은 입력 채널 수와 출력 채널 수를 조절하며, 마지막으로 Attention 블록이 적용.
 ## 2. 입력 크기를 줄이기 위해 stride가 2인 Convolution을 사용.
-## 3. 입력 데이터에 노이즈를 추가하고, 추가된 노이즈로 변환
+## 3. 입력 데이터에 노이즈를 추가하고, 추가된 노이즈로 변환.
 ## 4-1. Variance 및 Standard Deviation 계산 : 출력에서 mean과 log variance를 분리, 
 ## 4-2. log variance를 clamp하여 variance 및 standard deviation을 계산.
 ## 5. N(0, 1)에서 N(mean, stdev)로 변환 : 추출한 mean과 stdev를 사용하여 N(0, 1)에서 N(mean, stdev)로 변환.
@@ -114,6 +114,6 @@ class VAE_Encoder(nn.Sequential):
         return x
 
         ## 해당 VAE Encoder는 이미지를 저차원의 확률 분포로 매핑, 
-        ## 매핑한 확률 분포에서 샘플링하여 잠재 변수를 생성합니다. 
+        ## 매핑한 확률 분포에서 샘플링하여 잠재 변수를 생성. 
         ## 이러한 저차원 표현은 이미지의 중요한 특징을 포착, 
-        ## 생성된 노이즈를 고려하여 더 안정적인 특징을 생성하는 데 도움을 줄 것으로 예상.
+        ## 생성된 노이즈를 고려하여 안정적인 특징을 생성하는 데 도움을 줄 것으로 예상.

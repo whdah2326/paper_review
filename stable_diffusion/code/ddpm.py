@@ -37,8 +37,8 @@ class DDPMSampler:
         step_ratio = self.num_train_timesteps // self.num_inference_steps
         timesteps = (np.arange(0, num_inference_steps) * step_ratio).round()[::-1].copy().astype(np.int64)
         self.timesteps = torch.from_numpy(timesteps)
-        # 999, 998, 997, ..., 0 = 1,000 steps
-        # 999, 999-20, 999-40, ..., 0 = 50 steps
+        ## 999, 998, 997, ..., 0 = 1,000 steps
+        ## 999, 999-20, 999-40, ..., 0 = 50 steps
 
     ## 이전 timestep 값을 반환.
     def _get_previous_timestep(self, timestep: int) -> int:

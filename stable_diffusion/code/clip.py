@@ -27,14 +27,15 @@ class CLIPEmbedding(nn.Module):
 
 
 ## CLIPLayer
-## 1. Self-Attention 및 Feedforward Layer:
-## 1-1. SelfAttention 클래스를 사용하여 Self Attention 적용.
-## 1-2. 두 개의 Layernorm 층, Feedforward 층 (linear_1 및 linear_2), 
+## 1. SelfAttention 및 Feedforward Layer:
+## * 순방향 신경망(feedforward neural network) : 노드 간의 연결이 순환을 형성하지 "않는" 인공 신경망.
+## 1-1. Self.Attention 클래스를 사용하여 Self Attention 적용.
+## 1-2. 두 개의 Layernorm 층, Feedforward 층(linear_1 및 linear_2), 
 ##      및 QuickGELU 활성화 함수를 사용하여 Feedforward 네트워크를 정의.
 
-## 2. Forward Pass:
-# 2-1. Self Attention 적용 후 Feedforward Layer를 거쳐서 출력 계산.
-# 2-2. 출력은 이전의 residual connection과 더해져 최종 출력.
+## 2. Forward:
+## 2-1. Self Attention 적용 후 Feedforward Layer를 거쳐서 출력 계산.
+## 2-2. 출력은 이전의 residual connection과 더해져 최종 출력.
 
 class CLIPLayer(nn.Module):
     def __init__(self, n_head: int, n_embd: int):
