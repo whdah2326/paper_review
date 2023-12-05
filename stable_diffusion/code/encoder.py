@@ -103,7 +103,7 @@ class VAE_Encoder(nn.Sequential):
         # (Batch_Size, 4, Height / 8, Width / 8) -> (Batch_Size, 4, Height / 8, Width / 8)
         stdev = variance.sqrt()
         
-        # Transform N(0, 1) -> N(mean, stdev) 
+        # Transform N(0, 1) -> N(mean, stdev) ## 평균이 0, 표준편차가 1인 정규분포
         # (Batch_Size, 4, Height / 8, Width / 8) -> (Batch_Size, 4, Height / 8, Width / 8)
         x = mean + stdev * noise
         
