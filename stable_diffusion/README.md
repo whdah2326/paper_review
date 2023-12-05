@@ -1,7 +1,7 @@
 # Stable Diffusion - PyTorch
 PyTorch implementation of Stable Diffusion from scratch
 
-Try use `demo.ipynb` to generate images!
+Try using `demo.ipynb` to generate images!
 
 ## Download Model
 Download `v1-5-pruned-emaonly.ckpt` from
@@ -17,7 +17,8 @@ and save it in the data folder
 - [Cross Attention](https://arxiv.org/abs/2103.14899)
 - [Attention](https://arxiv.org/abs/1706.03762)
 - [Classifier Free Guidance](https://arxiv.org/abs/2207.12598)
-- [DDPM(Denoising Diffusion Probabilistic Models)](https://arxiv.org/abs/1503.03585)
+- [DDPM(Denoising Diffusion Probabilistic Models)](https://arxiv.org/abs/2006.11239)
+- (https://arxiv.org/abs/1503.03585)
 
 ### Github
 - [SouceCode at 'This stable diffusion code'](https://github.com/hkproj/pytorch-stable-diffusion)
@@ -41,7 +42,7 @@ and save it in the data folder
   - [5-1] [ELBO(Evidence Lower BOund)](https://modulabs.co.kr/blog/variational-inference-intro/)
 - [6] [Self Attention](https://paperswithcode.com/paper/self-attention-a-better-building-block-for)
 - [7] [DDPM-1](https://process-mining.tistory.com/188)
-- [8] [DDPM-1](https://ivdevlog.tistory.com/14)
+- [8] [DDPM-2](https://ivdevlog.tistory.com/14)
 - [9] [Diffusion and DDPM Loss Function](https://xoft.tistory.com/33)
 - [10] [CLIP](https://simonezz.tistory.com/88)
   - [10-1] [ZSL(Zero-Shot Learning)](https://deep-learning-study.tistory.com/873)
