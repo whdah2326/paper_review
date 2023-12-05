@@ -2,3 +2,6 @@
 
 # Sample Dataset
 cycle_gan/sample
+
+# ckpt
+stable_diffusion/data/v1-5-pruned-emaonly.ckpt

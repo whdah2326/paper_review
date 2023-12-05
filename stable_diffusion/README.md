@@ -40,7 +40,6 @@ and save it in the data folder
 - [6] [Self Attention](https://paperswithcode.com/paper/self-attention-a-better-building-block-for)
 - [7] [DDPM-1](https://process-mining.tistory.com/188)
 - [8] [DDPM-1](https://ivdevlog.tistory.com/14)
-variational-inference-intro/)
 - [9] [Diffusion and DDPM Loss Function](https://xoft.tistory.com/33)
 - [10] [CLIP](https://simonezz.tistory.com/88)
   - [10-1] [ZSL(Zero-Shot Learning)](https://deep-learning-study.tistory.com/873)
