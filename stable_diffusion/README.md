@@ -1,12 +1,12 @@
 # Stable Diffusion - PyTorch
 PyTorch implementation of Stable Diffusion from scratch
 
-Try using `demo.ipynb` to generate images!
+Try using `demo.ipynb` to generate images!  
 
 ## Download Model
 Download `v1-5-pruned-emaonly.ckpt` from
 [This](https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main)
-and save it in the data folder
+and save it in the data folder  
 
 
 ## Reference
@@ -14,8 +14,10 @@ and save it in the data folder
 ### Paper
 - [Stable Diffusion](https://arxiv.org/abs/2112.10752)
 - [VAE](https://arxiv.org/abs/1312.6114)
-- [Cross Attention](https://arxiv.org/abs/2103.14899)
 - [Attention](https://arxiv.org/abs/1706.03762)
+- [Self Attention](https://arxiv.org/abs/1812.07860v1)
+- [Cross Attention](https://arxiv.org/abs/2103.14899)
+- [U-Net](https://arxiv.org/abs/1505.04597)
 - [Classifier Free Guidance](https://arxiv.org/abs/2207.12598)
 - [DDPM(Denoising Diffusion Probabilistic Models)](https://arxiv.org/abs/2006.11239)
 - (https://arxiv.org/abs/1503.03585)
