@@ -2,16 +2,18 @@
 PyTorch implementation of Stable Diffusion from scratch
 
 Try using `demo.ipynb` to generate images!  
+</br>
 
 ## Download Model
 Download `v1-5-pruned-emaonly.ckpt` from
 [This](https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main)
 and save it in the data folder  
+</br>
+</br>
 
+# Reference
 
-## Reference
-
-### Paper
+## Paper
 - [Stable Diffusion](https://arxiv.org/abs/2112.10752)
 - [VAE](https://arxiv.org/abs/1312.6114)
 - [CLIP](https://arxiv.org/abs/2103.00020)
@@ -22,15 +24,15 @@ and save it in the data folder
 - [Classifier Free Guidance](https://arxiv.org/abs/2207.12598)
 - [DDPM(Denoising Diffusion Probabilistic Models)](https://arxiv.org/abs/2006.11239)
 - (https://arxiv.org/abs/1503.03585)  
+</br>
 
-
-### Github
+## Github
 - [SouceCode at 'This stable diffusion code'](https://github.com/hkproj/pytorch-stable-diffusion)
 - [Initial Stable Diffusion](https://github.com/CompVis/stable-diffusion)
 - [CLIP(Contrastive Language–Image Pre-training)](https://github.com/openai/CLIP)  
+</br>
 
-
-### Appendix
+## Appendix
 ![Stable Diffusion(Text-To-Image)](images/Text-To-Image.png)
 ![Stable Diffusion(Image-To-Image)](images/Image-To-Image.png)
 ![VAE](images/VAE.png)
